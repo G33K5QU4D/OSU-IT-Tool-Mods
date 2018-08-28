@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name     Color Code Ticket Types
+// @name     Dark Theme Color Code Ticket Types
 // @namespace  http://tampermonkey.net/
 // @version   2.0
-// @description Color code the tickets based on types in the queue
+// @description Color code the tickets based on types in the queue (Dark theme)
 // @author    Tyler Farnham / Luke Miletta
 // @match    https://oregonstate.teamdynamix.com/TDNext/Home/Desktop/*
 // ==/UserScript==
@@ -46,9 +46,16 @@ function items(){
     // Function that handles click of form button
     // Listens for click of next page buttons
     var next_page = document.getElementsByClassName("pager-link");
+    var sortButtons = maxReport.reportElement.childNodes[1].childNodes[1].childNodes[1].childNodes[1].childNodes;
+    console.log(sortButtons);
     var i;
     for(i = 0; i < next_page.length; i++){
         next_page[i].addEventListener ("click", click_page_button);
+    }
+    for(i = 1; i < (sortButtons.length - 1); i++){
+        console.log("Applying event listener to: ");
+        console.log(sortButtons[i].childNodes[0]);
+        sortButtons[i].childNodes[0].addEventListener("click", function(){window.setTimeout(waitUntilRefresh, 20)}, false);
     }
     //Listens for click of refresh button
     maxReport.reportElement.childNodes[0].childNodes[1].childNodes[2].addEventListener("click", function(){window.setTimeout(waitUntilRefresh, 50)}, false); //Grabs the refresh button on the maxReport element and applies the click event listener to it
@@ -63,6 +70,7 @@ function items(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function waitUntilRefresh(){
         if(maxReport.reportElement.childNodes[0].childNodes[1].childNodes[2].className != "fa fa-refresh fa-lg refresh-module-icon gutter-left-xs"){
+            console.log("waiting");
             window.setTimeout(waitUntilRefresh, 100);
             return -1;
         }
@@ -146,16 +154,16 @@ function click_page_button(){
 function setColors(tickets){
     for(var i = 0; i < tickets.length; i++){
         if(((tickets[i].children)[4].innerHTML) == "Open"){
-            tickets[i].setAttribute("style", "background-color: #d4fce6;");
+            tickets[i].setAttribute("style", "background-color: #1E453E;");
         }
         else if(((tickets[i].children)[4].innerHTML) == "In Process"){
-            tickets[i].setAttribute("style", "background-color: #76a8f7;");
+            tickets[i].setAttribute("style", "background-color: #010048;");
         }
         else if(((tickets[i].children)[4].innerHTML) == "New"){
-            tickets[i].setAttribute("style", "background-color: #f25757;");
+            tickets[i].setAttribute("style", "background-color: #800000;");
         }
         else if(((tickets[i].children)[4].innerHTML) == "Escalated - Internal"){
-            tickets[i].setAttribute("style", "background-color: #e17efc;");
+            tickets[i].setAttribute("style", "background-color: #421F40;");
         }
     }
 }

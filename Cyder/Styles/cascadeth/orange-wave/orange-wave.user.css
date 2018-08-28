@@ -1,0 +1,67 @@
+/* ==UserStyle==
+@name           Orange Wave
+@namespace      cyder.oregonstate.edu
+@version        2.0.0
+@description    A dark orange them for the Cyder network tool
+@author         cascadeth <cascadeth@gmail.com>
+@homepageURL    https://github.com/cascadeth/OSU-IT-Tool-Mods
+@license        GPL v3
+==/UserStyle== */
+
+@-moz-document url-prefix("https://cyder.oregonstate.edu/") {
+
+    body {
+        background-image: url("https://wallpaper-house.com/data/out/8/wallpaper2you_282393.png");
+        background-size: 100% 100%;
+        color: #D52D00;
+    }
+    .main .content,
+    td,
+    select,
+    input {
+        background: #222222;
+        color: #D52D00;
+        opacity: 0.9;
+    }
+    .content {
+        border-radius: 20px;
+    }
+    .content h2,
+    .content h3,
+    #search-meta a {
+        padding: 5px;
+    }
+    .page-header h1 {
+        color: #888;
+    }
+    a,
+    p,
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: #D52D00;
+    }
+    #sidebar .nav-link.selected,
+    #sidebar .nav-link.child.selected {
+        background: #D52D00;
+        color: #000000;
+        opacity: 0.7;
+    }
+    a.btn {
+        background: #000000;
+        color: #D52D00;
+        opacity: 0.7;
+    }
+    #search input,
+    #header {
+        background: #111111;
+        color: #D52D00;
+        border-color: #D52D00;
+    }
+    .user-info,
+    .user-info .level,
+    #defaultCtnrBtn {
+        color: #D52D00;
+    }
+}
